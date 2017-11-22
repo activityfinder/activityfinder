@@ -15,7 +15,7 @@
       </div>
 
       <div class="field">
-        {{> Text_Form_Control label="Title" placeholder="Student" value=profile.title errorMessage=(fieldError "title")}}
+        {{> Text_Form_Control label="Email" placeholder="foo@bar.com" value=profile.title errorMessage=(fieldError "email")}}
         {{> Text_Form_Control label="Picture" placeholder="http://foo.com/shot.jpg" value=profile.picture errorMessage=(fieldError "picture")}}
       </div>
 
@@ -25,9 +25,8 @@
 
       <div class="fields">
 
-        {{> Social_Network_Form_Control label="Github" icon="github" placeholder="pmjohnson" value=profile.github errorMessage=(fieldError "github")}}
-        {{> Social_Network_Form_Control label="Facebook" icon="facebook" placeholder="pmjohnson" value=profile.facebook errorMessage=(fieldError "facebook")}}
-        {{> Social_Network_Form_Control label="Instagram" icon="instagram" placeholder="pmjohnson" value=profile.instagram errorMessage=(fieldError "instagram")}}
+        {{> Text_Form_Control label="Phone" placeholder="888-888-8888" value=profile.picture errorMessage=(fieldError "phone")}}
+        {{> Text_Form_Control label="Best Contact" placeholder="Email" value=profile.picture errorMessage=(fieldError "conctact")}}
 
       </div>
 

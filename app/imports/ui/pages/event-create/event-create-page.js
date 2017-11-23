@@ -48,8 +48,8 @@ Template.Event_Create_Page.events({
     const location = event.target.Location.value;
     const date = event.target.Date.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
-    const time = event.target.Time.value;
-    const description = event.target.Description.value;
+    const time = event.target.time.value;
+    const description = event.target.description.value;
     const image = event.target.Image.value;
     const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);

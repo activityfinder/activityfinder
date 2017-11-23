@@ -76,6 +76,14 @@ userRoutes.route('/event', {
   },
 });
 
+export const eventInfoPageRouteName = 'Event_Info_Page';
+userRoutes.route('/event-info', {
+  name: eventInfoPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: eventInfoPageRouteName });
+  },
+});
+
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {
   action() {

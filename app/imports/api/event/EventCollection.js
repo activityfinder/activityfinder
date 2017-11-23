@@ -23,7 +23,7 @@ class EventCollection extends BaseCollection {
       name: { type: String },
       // Remainder are optional
       location: { type: String },
-      date: { type: Date },
+      date: { type: String },
       time: { type: String },
       interests: { type: Array, optional: true },
       'interests.$': { type: String },
@@ -40,7 +40,7 @@ class EventCollection extends BaseCollection {
       username: String,
       image: String,
       description: String,
-      date: Date,
+      date: String,
       time: String,
     };
     check({ name, location, username, image, description, date, time }, checkPattern);

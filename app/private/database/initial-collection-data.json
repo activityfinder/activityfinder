@@ -145,6 +145,23 @@
           "picture": "/images/casanova.jpg"
         }
       ]
+    },
+    {
+      "name": "EventCollection",
+      "contents": [
+        {
+          "name": "Ice Cream Social",
+          "username": "jlam890",
+          "location": "UH Manoa",
+          "date": "11/30/17",
+          "time": "8:00pm",
+          "interests": [
+            "Evolutionary Computation"
+          ],
+          "description": "Free ice cream and free admission! Show up to mingle with your peers. Please RSVP so we know how much ice cream to buy.",
+          "image": "/images/icecream.jpg"
+        }
+      ]
     }
   ]
 }

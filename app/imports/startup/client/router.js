@@ -68,6 +68,14 @@ userRoutes.route('/filter', {
   },
 });
 
+export const eventCreatePageRouteName = 'Event_Create_Page';
+userRoutes.route('/event', {
+  name: eventCreatePageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: eventCreatePageRouteName });
+  },
+});
+
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {
   action() {

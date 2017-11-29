@@ -1,9 +1,9 @@
 import { Tracker } from 'meteor/tracker';
-// import { EventData } from '../../api/eventdata/eventdata';
+import { EventData } from '/imports/api/event/EventCollection';
 
 // Define a function that checks whether a moment has already passed.
-let isPast = (date) => {
-  let today = moment().format();
+const isPast = (date) => {
+  const today = moment().format();
   return moment(today).isAfter(date);
 };
 
@@ -66,7 +66,7 @@ Template.Calendar.onRendered(() => {
         let update = {
           _id: session._id,
           start: date,
-          end: date
+          end: date,
         };
 
         // Update the date of the event.

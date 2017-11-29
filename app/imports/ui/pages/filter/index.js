@@ -1,3 +1,4 @@
 import './filter-page.html';
-import './filter-page-directory.html';
+import './calendar.html';
 import './filter-page.js';
+import './calendar.js';

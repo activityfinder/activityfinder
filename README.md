@@ -1,2 +1,2 @@
-# actvityfinder
+# activityfinder
 Main project

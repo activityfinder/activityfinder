@@ -17,9 +17,9 @@ Template.Calendar.onRendered(() => {
   $('#event-calendar').fullCalendar({
     // Define the navigation buttons.
     header: {
-      left:   'title',
+      left: 'title',
       center: '',
-      right:  'today prev,next'
+      right: 'today prev,next',
     },
     // Add events to the calendar.
     events(start, end, timezone, callback) {
@@ -46,9 +46,9 @@ Template.Calendar.onRendered(() => {
     // Triggered when a day is clicked on.
     dayClick(date, session) {
       // Store the date so it can be used when adding an event to the EventData collection.
-      Session.set('eventModal', { type: 'add', date: date.format() });
+      session.set('eventModal', { type: 'add', date: date.format() });
       // If the date has not already passed, show the create event modal.
-      if(moment(date.format()).isSameOrAfter(moment(), 'day')) {
+      if (moment(date.format()).isSameOrAfter(moment(), 'day')) {
         $('#create-event-modal').modal({ blurring: true }).modal('show');
       }
     },
@@ -60,10 +60,10 @@ Template.Calendar.onRendered(() => {
 
     // Allow events to be dragged and dropped.
     eventDrop(session, delta, revert) {
-      let date = session.start.format();
+      const date = session.start.format();
 
       if (!isPast(date)) {
-        let update = {
+        const update = {
           _id: session._id,
           start: date,
           end: date,

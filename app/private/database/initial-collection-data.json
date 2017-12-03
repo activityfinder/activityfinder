@@ -5,23 +5,11 @@
       "name": "InterestCollection",
       "contents": [
         {
-          "name": "Software Engineering",
-          "description": "Techniques for development of high quality systems"
-        },
-        {
-          "name": "Algorithms",
-          "description": "A set of rules to be followed in computation"
-        },
-        {
-          "name": "Mobile Networks",
-          "description": "Networks created using mobile devices."
-        },
-        {
           "name": "Sailing",
           "description": ""
         },
         {
-          "name": "Mars",
+          "name": "Cooking",
           "description": ""
         },
         {
@@ -41,15 +29,7 @@
           "description": ""
         },
         {
-          "name": "Psychology",
-          "description": ""
-        },
-        {
           "name": "Motorcycling",
-          "description": ""
-        },
-        {
-          "name": "Accreditation",
           "description": ""
         },
         {
@@ -61,15 +41,11 @@
           "description": ""
         },
         {
-          "name": "Cybersecurity",
-          "description": ""
-        },
-        {
           "name": "Surfing",
           "description": ""
         },
         {
-          "name": "Computer Vision",
+          "name": "Gaming",
           "description": ""
         },
         {
@@ -77,7 +53,7 @@
           "description": ""
         },
         {
-          "name": "Evolutionary Computation",
+          "name": "Arts",
           "description": ""
         }
       ]
@@ -153,7 +129,7 @@
           "name": "Ice Cream Social",
           "username": "jlam890",
           "location": "UH Manoa",
-          "date": "11/30/17",
+          "date": "12/30/17",
           "time": "8:00pm",
           "interests": [
             "Evolutionary Computation"

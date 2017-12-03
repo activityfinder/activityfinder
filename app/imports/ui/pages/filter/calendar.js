@@ -23,10 +23,10 @@ Template.Calendar.onRendered(() => {
     },
     // Add events to the calendar.
     events(start, end, timezone, callback) {
-      const data = EventData.find().fetch().map((session) => {
+      const data = EventData.find().fetch().map((Session) => {
         // Don't allow already past study events to be editable.
-        session.editable = !isPast(session.start);
-        return session;
+        Session.editable = !isPast(Session.start);
+        return Session;
       });
 
       if (data) {

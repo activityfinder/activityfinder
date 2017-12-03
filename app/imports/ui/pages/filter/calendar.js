@@ -44,14 +44,13 @@ Template.Calendar.onRendered(() => {
     },
 
     // Triggered when a day is clicked on.
-    dayClick(date, session) {
+    dayClick(date) {
       // Store the date so it can be used when adding an event to the EventData collection.
-      session.set('eventModal', { type: 'add', date: date.format() });
+      Session.set('eventModal', { type: 'add', date: date.format() });
       // If the date has not already passed, show the create event modal.
-      if (moment(date.format()).isSameOrAfter(moment(), 'day')) {
+      if (date.isAfter(moment())) {
         $('#create-event-modal').modal({ blurring: true }).modal('show');
       }
-      console.log(1);
     },
 
     // Delete an event if it is clicked on.

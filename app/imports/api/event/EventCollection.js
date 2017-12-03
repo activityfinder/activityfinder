@@ -24,9 +24,9 @@ class EventCollection extends BaseCollection {
       title: { type: String },
       start: { type: String },
       end: { type: String },
-      startValue: { type: Number },
+      startValue: { type: Number, optional: true },
       endValue: {
-        type: Number, custom: function startAndEnd() {
+        type: Number, optional: true, custom: function startAndEnd() {
           let x = 0;
           if (this.value < this.field('startValue').value || this.value === this.field('startValue').value) {
             x = 'endValue';
@@ -34,14 +34,14 @@ class EventCollection extends BaseCollection {
           return x;
         },
       },
-      startString: { type: String },
-      endString: { type: String },
+      startString: { type: String, optional: true },
+      endString: { type: String, optional: true },
       interests: { type: Array, optional: true },
       'interests.$': { type: String },
-      description: { type: String },
+      description: { type: String, optional: true },
       image: { type: SimpleSchema.RegEx.Url, optional: true },
-      peopleGoing: { type: Array },
-      'peopleGoing.$': { type: String },
+      peopleGoing: { type: Array, optional: true },
+      'peopleGoing.$': { type: String, optional: true },
     }, { tracker: Tracker }));
   }
 

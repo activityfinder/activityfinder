@@ -1,58 +1,47 @@
 <template name="Event_Info_Page">
-
   {{#if Template.subscriptionsReady}}
-
-  <div class="ui text container segment">
-    <div class="ui dividing header">
-      Event Info
-    </div>
-    <form class="ui equal width form event-data-form {{ successClass }} {{ errorClass }}">
-
-      <div class="field">
-        {{> Text_Form_Control label="Name" value=(eventDataField 'name') errorMessage=(fieldError "name")}}
-      </div>
-
-      <div class="field">
-        {{> Text_Form_Control label="Location" value=(eventDataField 'location') errorMessage=(fieldError "location")}}
-      </div>
-
-      <div class="field">
-        {{> Text_Form_Control label="Date" value=(eventDataField 'date') errorMessage=(fieldError "date")}}
-      </div>
-
-      <div class="field">
-        {{> Text_Form_Control label="Time" value=(eventDataField 'time') errorMessage=(fieldError "time")}}
-      </div>
-
-      <div class="field">
-        {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true
-        }}
-      </div>
-
-      <div class="field">
-        {{> Text_Form_Control label="Description" value=(eventDataField 'description') errorMessage=(fieldError
-        "description")}}
-      </div>
-
-      <div class="field">
-        {{> Text_Form_Control label="Contact Info" value=(eventDataField 'description') errorMessage=(fieldError
-        "description")}}
-      </div>
-
-      <div class="field">
-        <label>Are You Going?</label>
-        <div class="fields">
-          <div class="ui radio checkbox">
-            <input type="radio" name="Yes" id="yes" value="yes">
-            <label>Yes </label>
-          </div>
-          <div class="ui radio checkbox">
-            <input type="radio" name="No" id="no" value="no">
-            <label>No</label>
+  <div style="margin-top: 10px" class="ui container">
+    <div class="item">
+      <div class="content">
+        <div class="title">
+          {{ eventDataField 'title' }}
+        </div>
+        <img class="right floated mini ui image" src="{{event.image}}">
+        <div class="owner">
+          {{ eventDataField 'owner' }}
+        </div>
+        <div class="start">
+          {{ eventDataField 'start' }}
+        </div>
+        <div class="end">
+          {{ eventDataField 'end' }}
+        </div>
+        <div class="description">
+          {{ eventDataField 'description' }}
+        </div>
+        <div class="interests">
+          {{#each interest in eventDataField 'interests' }}
+          <a class="ui blue tag small label">{{interest}}</a>
+        </div>
+        <div class="peopleGoing">
+          {{#each person in eventDataField 'peopleGoing' }}
+          <a>{{person}}</a>
+        </div>
+        <div class="field">
+          <label>Are You Going?</label>
+          <div class="fields">
+            <div class="ui radio checkbox">
+              <input type="radio" name="Yes" id="yes" value="yes">
+              <label>Yes </label>
+            </div>
+            <div class="ui radio checkbox">
+              <input type="radio" name="No" id="no" value="no">
+              <label>No</label>
+            </div>
           </div>
         </div>
       </div>
-    </form>
+    </div>
   </div>
   {{/if}}
 

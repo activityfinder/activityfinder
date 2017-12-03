@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import SimpleSchema from 'simpl-schema';
 import BaseCollection from '/imports/api/base/BaseCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
@@ -6,7 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { Tracker } from 'meteor/tracker';
 
-/** @module Profile */
+/** @module Event */
 
 /**
  * Profiles provide portfolio data for a user.
@@ -15,49 +16,61 @@ import { Tracker } from 'meteor/tracker';
 class EventCollection extends BaseCollection {
 
   /**
-   * Creates the Profile collection.
+   * Creates the Event collection.
    */
   constructor() {
     super('Event', new SimpleSchema({
-      username: { type: String },
-      name: { type: String },
-      // Remainder are optional
-      location: { type: String },
-      date: { type: String },
-      time: { type: String },
+      owner: { type: String },
+      title: { type: String },
+      start: { type: String },
+      end: { type: String },
+      startValue: { type: Number },
+      endValue: {
+        type: Number, custom: function startAndEnd() {
+          let x = 0;
+          if (this.value < this.field('startValue').value || this.value === this.field('startValue').value) {
+            x = 'endValue';
+          }
+          return x;
+        },
+      },
+      startString: { type: String },
+      endString: { type: String },
       interests: { type: Array, optional: true },
       'interests.$': { type: String },
       description: { type: String },
       image: { type: SimpleSchema.RegEx.Url, optional: true },
+      peopleGoing: { type: Array },
+      'peopleGoing.$': { type: String },
     }, { tracker: Tracker }));
   }
 
-  define({ username, name = '', location = '', date = '', time = '', interests = [], description = '', image = '' }) {
+  /** Possibly an error because owner might not have to be initialized as '' */
+  define({ owner = '', title = '', start = '', end = '', startValue = '', endValue = '', startString = '', endString = '', interests = [], description = '', image = '', peopleGoing = [] }) {
     // make sure required fields are OK.
     const checkPattern = {
-      name: String,
-      location: String,
-      username: String,
-      image: String,
+      owner: String,
+      title: String,
+      start: Number,
+      end: Number,
+      startValue: String,
+      endValue: String,
+      startString: String,
+      endString: String,
       description: String,
-      date: String,
-      time: String,
+      image: String,
     };
-    check({ name, location, username, image, description, date, time }, checkPattern);
+    check({ owner, title, start, end, startValue, endValue, startString, endString, description, image }, checkPattern);
 
-    if (this.find({ username }).count() > 0) {
-      throw new Meteor.Error(`${username} is previously defined in another Profile`);
-    }
-
-    // Throw an error if any of the passed Interest names are not defined.
+// Throw an error if any of the passed Interest names are not defined.
     Interests.assertNames(interests);
 
-    // Throw an error if there are duplicates in the passed interest names.
+// Throw an error if there are duplicates in the passed interest names.
     if (interests.length !== _.uniq(interests).length) {
-      throw new Meteor.Error(`${interests} contains duplicates`);
+      throw new Meteor.Error('$ {interests}contains duplicates');
     }
 
-    return this._collection.insert({ name, username, location, date, time, interests, description, image });
+    return this._collection.insert({ owner, title, start, end, startValue, endValue, startString, endString, interests, description, image, peopleGoing });
   }
 
   /**
@@ -67,15 +80,19 @@ class EventCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const name = doc.name;
-    const username = doc.username;
-    const location = doc.location;
-    const date = doc.date;
-    const time = doc.time;
+    const owner = doc.owner;
+    const title = doc.title;
+    const start = doc.start;
+    const end = doc.end;
+    const startValue = doc.startValue;
+    const endValue = doc.endValue;
+    const startString = doc.startString;
+    const endString = doc.endString;
     const interests = doc.interests;
     const description = doc.description;
     const image = doc.image;
-    return { name, username, location, date, time, interests, description, image };
+    const peopleGoing = doc.peopleGoing;
+    return { owner, title, start, end, startValue, endValue, startString, endString, interests, description, image, peopleGoing };
   }
 }
 

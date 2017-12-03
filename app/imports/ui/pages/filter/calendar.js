@@ -23,7 +23,7 @@ Template.Calendar.onRendered(() => {
     },
     // Add events to the calendar.
     events(start, end, timezone, callback) {
-      let data = EventData.find().fetch().map((session) => {
+      const data = EventData.find().fetch().map((session) => {
         // Don't allow already past study events to be editable.
         session.editable = !isPast(session.start);
         return session;
@@ -51,6 +51,7 @@ Template.Calendar.onRendered(() => {
       if (moment(date.format()).isSameOrAfter(moment(), 'day')) {
         $('#create-event-modal').modal({ blurring: true }).modal('show');
       }
+      console.log(1);
     },
 
     // Delete an event if it is clicked on.

@@ -4,28 +4,30 @@
     <div class="item">
       <div class="content">
         <div class="title">
-          {{ eventDataField 'title' }}
+          {{ myEvent.title }}
         </div>
-        <img class="right floated mini ui image" src="{{event.image}}">
+        <img class="right floated mini ui image" src="{{ myEvent.image }}">
         <div class="owner">
-          {{ eventDataField 'owner' }}
+          {{ myEvent.owner }}
         </div>
         <div class="start">
-          {{ eventDataField 'start' }}
+          {{ myEvent.start }}
         </div>
         <div class="end">
-          {{ eventDataField 'end' }}
+          {{ myEvent.end }}
         </div>
         <div class="description">
-          {{ eventDataField 'description' }}
+          {{ myEvent.description }}
         </div>
         <div class="interests">
-          {{#each interest in eventDataField 'interests' }}
+          {{#each interest in myEvent.interests }}
           <a class="ui blue tag small label">{{interest}}</a>
+          {{/each}}
         </div>
         <div class="peopleGoing">
-          {{#each person in eventDataField 'peopleGoing' }}
+          {{#each person in myEvent.peopleGoing }}
           <a>{{person}}</a>
+          {{/each}}
         </div>
         <div class="field">
           <label>Are You Going?</label>

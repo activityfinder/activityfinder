@@ -77,7 +77,7 @@ userRoutes.route('/event', {
 });
 
 export const eventInfoPageRouteName = 'Event_Info_Page';
-userRoutes.route('/event-info', {
+userRoutes.route('/event-info:_id', {
   name: eventInfoPageRouteName,
   action() {
     BlazeLayout.render('User_Layout', { main: eventInfoPageRouteName });

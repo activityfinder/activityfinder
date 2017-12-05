@@ -46,15 +46,15 @@ class EventCollection extends BaseCollection {
   }
 
   /** Possibly an error because owner might not have to be initialized as '' */
-  define({ owner = '', title = '', start = '', end = '', startValue = '', endValue = '', startString = '', endString = '', interests = [], description = '', image = '', peopleGoing = [] }) {
+  define({ owner = '', title = '', start = '', end = '', startValue = 0, endValue = 1, startString = '', endString = '', interests = [], description = '', image = '', peopleGoing = [] }) {
     // make sure required fields are OK.
     const checkPattern = {
       owner: String,
       title: String,
-      start: Number,
-      end: Number,
-      startValue: String,
-      endValue: String,
+      start: String,
+      end: String,
+      startValue: Number,
+      endValue: Number,
       startString: String,
       endString: String,
       description: String,
@@ -74,8 +74,8 @@ class EventCollection extends BaseCollection {
   }
 
   /**
-   * Returns an object representing the Profile docID in a format acceptable to define().
-   * @param docID The docID of a Profile.
+   * Returns an object representing the Event docID in a format acceptable to define().
+   * @param docID The docID of a Event.
    * @returns { Object } An object representing the definition of docID.
    */
   dumpOne(docID) {

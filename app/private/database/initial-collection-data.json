@@ -126,16 +126,28 @@
       "name": "EventCollection",
       "contents": [
         {
+<<<<<<< HEAD
           "name": "Ice Cream Social",
           "username": "jlam890",
           "location": "UH Manoa",
           "date": "12/30/17",
+=======
+          "owner": "jlam890",
+          "title": "Ice Cream Social",
+          "start": "8:00 am",
+          "end": "10:00 am",
+>>>>>>> issue19
           "time": "8:00pm",
           "interests": [
             "Evolutionary Computation"
           ],
           "description": "Free ice cream and free admission! Show up to mingle with your peers. Please RSVP so we know how much ice cream to buy.",
-          "image": "/images/icecream.jpg"
+          "image": "/images/icecream.jpg",
+          "peopleGoing": [
+            "jlam890",
+            "username2",
+            "username3"
+          ]
         }
       ]
     }

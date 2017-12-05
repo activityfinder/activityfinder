@@ -1,31 +1,24 @@
-.landing-section-1 {
-  padding: 10px 10px 30px 10px;
+.ui.topmenu.inverted.menu {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.background {
+  background-image: url("http://images.kuoni.co.uk/73/kauai-40591430-1483623716-ImageGalleryLightboxLarge.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
+  text-align: center;
 }
 
-.landing-section-2 {
-  padding: 20px 10px 20px 10px;
-  color: white;
+.logo {
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
-.landing-section-3 {
-  padding: 20px 10px 30px 30px;
-  color: white;
-}
-
-.landing-section-1-welcome {
-  font-family: 'Noto Serif', sans-serif;
-  font-weight: 900;
-  font-size: 72px;
-}
-
-.landing-section-header {
-  font-family: 'Noto Serif', sans-serif;
-  font-weight: 900;
-  font-size: 36px;
-}
-
-#background {
-  height: 100%;
-  background-image: url("http://images.kuoni.co.uk/73/kauai-40591430-1483623716-ImageGalleryLightboxLarge.jpg")
+.footer {
+  padding-top: 100px;
+  padding-bottom: 100px;
 }

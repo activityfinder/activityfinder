@@ -1,5 +1,15 @@
 import { Tracker } from 'meteor/tracker';
-import { EventData } from '/imports/api/event/EventCollection';
+import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { _ } from 'meteor/underscore';
+import { Events } from '/imports/api/event/EventCollection';
+import { Interests } from '/imports/api/interest/InterestCollection';
+
+Template.Filter_Page.onCreated(function onCreated() {
+  this.subscribe(Interests.getPublicationName());
+  this.subscribe(Events.getPublicationName());
+  // this.messageFlags = new ReactiveDict();
+});
 
 // Define a function that checks whether a moment has already passed.
 const isPast = (date) => {
@@ -12,7 +22,6 @@ Template.Calendar.onCreated(() => {
 });
 
 Template.Calendar.onRendered(() => {
-
   // Initialize the calendar.
   $('#event-calendar').fullCalendar({
     // Define the navigation buttons.
@@ -23,7 +32,7 @@ Template.Calendar.onRendered(() => {
     },
     // Add events to the calendar.
     events(start, end, timezone, callback) {
-      const data = EventData.find().fetch().map((Session) => {
+      const data = Events.find().fetch().map((Session) => {
         // Don't allow already past study events to be editable.
         Session.editable = !isPast(Session.start);
         return Session;
@@ -55,7 +64,7 @@ Template.Calendar.onRendered(() => {
 
     // Delete an event if it is clicked on.
     eventClick(event) {
-      EventData.remove({ _id: event._id });
+      Events.remove({ _id: event._id });
     },
 
     // Allow events to be dragged and dropped.
@@ -79,7 +88,7 @@ Template.Calendar.onRendered(() => {
 
   // Updates the calendar if there are changes.
   Tracker.autorun(() => {
-    EventData.find().fetch();
+    Events.find().fetch();
     $('#event-calendar').fullCalendar('refetchEvents');
   });
 });

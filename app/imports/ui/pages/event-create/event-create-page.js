@@ -4,6 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Events } from '/imports/api/event/EventCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
+import { Profiles } from '/imports/api/profile/ProfileCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
@@ -28,15 +29,17 @@ Template.Event_Create_Page.helpers({
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
   event() {
-    return Events.findDoc(FlowRouter.getParam('username'));
+    return Profiles.findDoc(FlowRouter.getParam('username'));
   },
   interests() {
-    const event = Events.findDoc(FlowRouter.getParam('username'));
+    /* const event = Profiles.findDoc(FlowRouter.getParam('username'));
     const selectedInterests = event.interests;
     return event && _.map(Interests.findAll(),
             function makeInterestObject(interest) {
               return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
             });
+    */
+    return Interests.findAll();
   },
 });
 
@@ -48,8 +51,8 @@ Template.Event_Create_Page.events({
     const location = event.target.Location.value;
     const date = event.target.Date.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
-    const time = event.target.time.value;
-    const description = event.target.description.value;
+    const time = event.target.Time.value;
+    const description = event.target.Description.value;
     const image = event.target.Image.value;
     const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);

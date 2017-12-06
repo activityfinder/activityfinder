@@ -5,23 +5,11 @@
       "name": "InterestCollection",
       "contents": [
         {
-          "name": "Software Engineering",
-          "description": "Techniques for development of high quality systems"
-        },
-        {
-          "name": "Algorithms",
-          "description": "A set of rules to be followed in computation"
-        },
-        {
-          "name": "Mobile Networks",
-          "description": "Networks created using mobile devices."
-        },
-        {
           "name": "Sailing",
           "description": ""
         },
         {
-          "name": "Mars",
+          "name": "Cooking",
           "description": ""
         },
         {
@@ -41,15 +29,7 @@
           "description": ""
         },
         {
-          "name": "Psychology",
-          "description": ""
-        },
-        {
           "name": "Motorcycling",
-          "description": ""
-        },
-        {
-          "name": "Accreditation",
           "description": ""
         },
         {
@@ -61,15 +41,11 @@
           "description": ""
         },
         {
-          "name": "Cybersecurity",
-          "description": ""
-        },
-        {
           "name": "Surfing",
           "description": ""
         },
         {
-          "name": "Computer Vision",
+          "name": "Gaming",
           "description": ""
         },
         {
@@ -77,72 +53,8 @@
           "description": ""
         },
         {
-          "name": "Evolutionary Computation",
+          "name": "Arts",
           "description": ""
-        }
-      ]
-    },
-    {
-      "name": "ProfileCollection",
-      "contents": [
-        {
-          "firstName": "Lee",
-          "lastName": "Altenberg",
-          "username": "altenber",
-          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Evolutionary Computation"
-          ],
-          "title": "Associate Professor, Information and Computer Sciences",
-          "picture": "/images/altenberg.jpg"
-        },
-        {
-          "firstName": "Kyungim",
-          "lastName": "Baek",
-          "username": "baek",
-          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Computer Vision"
-          ],
-          "title": "Associate Professor, Information and Computer Sciences",
-          "picture": "/images/baek.jpg"
-        },
-        {
-          "firstName": "Edo",
-          "lastName": "Biagioni",
-          "username": "esb",
-          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Mobile Networks",
-            "Sailing"
-          ],
-          "title": "Associate Professor, Information and Computer Sciences",
-          "picture": "/images/biagioni.jpg"
-        },
-        {
-          "firstName": "Kim",
-          "lastName": "Binsted",
-          "username": "binsted",
-          "bio": "I am an Associate Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Mars",
-            "Imu Cooking"
-          ],
-          "title": "Associate Professor, Information and Computer Sciences",
-          "picture": "/images/binsted.jpg"
-        },
-        {
-          "firstName": "Henri",
-          "lastName": "Casanova",
-          "username": "henric",
-          "github": "henricasanova",
-          "bio": "I am a Professor of Information and Computer Sciences at the University of Hawaii.",
-          "interests": [
-            "Surfing",
-            "Photography"
-          ],
-          "title": "Professor, Information and Computer Sciences",
-          "picture": "/images/casanova.jpg"
         }
       ]
     },
@@ -153,13 +65,22 @@
           "name": "Ice Cream Social",
           "username": "jlam890",
           "location": "UH Manoa",
-          "date": "11/30/17",
+          "date": "12/30/17",
+          "owner": "jlam890",
+          "title": "Ice Cream Social",
+          "start": "8:00 am",
+          "end": "10:00 am",
           "time": "8:00pm",
           "interests": [
             "Evolutionary Computation"
           ],
           "description": "Free ice cream and free admission! Show up to mingle with your peers. Please RSVP so we know how much ice cream to buy.",
-          "image": "/images/icecream.jpg"
+          "image": "/images/icecream.jpg",
+          "peopleGoing": [
+            "jlam890",
+            "username2",
+            "username3"
+          ]
         }
       ]
     }

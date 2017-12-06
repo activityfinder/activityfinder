@@ -16,12 +16,14 @@ Template.Event_Info_Page.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
   this.messageFlags.set(displaySuccessMessage, false);
+  const myEvent = Events.dumpOne(FlowRouter.getParam('_id'));
+  console.log(myEvent.title);
   this.context = Events.getSchema().namedContext('Event_Info_Page');
 });
 
 Template.Event_Info_Page.helpers({
   eventDataField(fieldName) {
-    const eventData = Events.findOne(FlowRouter.getParam('_id'));
+    const eventData = Events.dumpOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return eventData && eventData[fieldName];
   },

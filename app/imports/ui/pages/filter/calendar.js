@@ -32,10 +32,10 @@ Template.Calendar.onRendered(() => {
     },
     // Add events to the calendar.
     events(start, end, timezone, callback) {
-      const data = Events.find().fetch().map((Session) => {
+      const data = Events.find().fetch().map((session) => {
         // Don't allow already past study events to be editable.
-        Session.editable = !isPast(Session.start);
-        return Session;
+        session.editable = !isPast(session.start);
+        return session;
       });
 
       if (data) {
@@ -48,7 +48,7 @@ Template.Calendar.onRendered(() => {
       element.find('.fc-content').html(
           `<h4 class="title">${session.name}</h4>
           <p class="time">${session.time}</p>
-          `
+          `,
       );
     },
 

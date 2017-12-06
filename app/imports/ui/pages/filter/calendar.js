@@ -14,7 +14,7 @@ Template.Filter_Page.onCreated(function onCreated() {
 // Define a function that checks whether a moment has already passed.
 const isPast = (date) => {
   const today = moment().format();
-  return moment(today).isAfter(date);
+  return moment(today).isAfter(moment(date));
 };
 
 Template.Calendar.onCreated(() => {
@@ -46,8 +46,8 @@ Template.Calendar.onRendered(() => {
     // Configure the information displayed for an "event."
     eventRender(session, element) {
       element.find('.fc-content').html(
-          `<h4 class="title">${session.title}</h4>
-          <p class="time">${session.startString}</p>
+          `<h4 class="title">${session.name}</h4>
+          <p class="time">${session.time}</p>
           `
       );
     },

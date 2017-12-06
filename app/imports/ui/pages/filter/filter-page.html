@@ -12,12 +12,13 @@
       {{> Calendar }}
 
     </div>
-
-    <div style="margin-top: 20px; background-color: #00B5AD" class="ui middle aligned celled list">
+    <div class="ui container">
+    <div style="margin-top: 20px" class="ui middle aligned celled list">
     {{#each event in eventss }}
       {{> Event_Card event=event }}
     {{/each}}
-  </div>
+    </div>
+    </div>
 
   {{/if}}
 </template>

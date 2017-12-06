@@ -2,13 +2,15 @@ import { Tracker } from 'meteor/tracker';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
+import { $ } from 'meteor/jquery';
+import { moment } from 'meteor/momentjs:moment';
 import { Events } from '/imports/api/event/EventCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
 
 Template.Filter_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
-  // this.messageFlags = new ReactiveDict();
+  this.messageFlags = new ReactiveDict();
 });
 
 // Define a function that checks whether a moment has already passed.

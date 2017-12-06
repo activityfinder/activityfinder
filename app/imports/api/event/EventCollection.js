@@ -20,6 +20,7 @@ class EventCollection extends BaseCollection {
    */
   constructor() {
     super('Event', new SimpleSchema({
+      date: { type: String },
       owner: { type: String },
       title: { type: String },
       start: { type: String },
@@ -46,9 +47,10 @@ class EventCollection extends BaseCollection {
   }
 
   /** Possibly an error because owner might not have to be initialized as '' */
-  define({ owner = '', title = '', start = '', end = '', startValue = 0, endValue = 1, startString = '', endString = '', interests = [], description = '', image = '', peopleGoing = [] }) {
+  define({ date = '', owner = '', title = '', start = '', end = '', startValue = 0, endValue = 1, startString = '', endString = '', interests = [], description = '', image = '', peopleGoing = [] }) {
     // make sure required fields are OK.
     const checkPattern = {
+      date: String,
       owner: String,
       title: String,
       start: String,
@@ -60,7 +62,7 @@ class EventCollection extends BaseCollection {
       description: String,
       image: String,
     };
-    check({ owner, title, start, end, startValue, endValue, startString, endString, description, image }, checkPattern);
+    check({ date, owner, title, start, end, startValue, endValue, startString, endString, description, image }, checkPattern);
 
 // Throw an error if any of the passed Interest names are not defined.
     Interests.assertNames(interests);
@@ -70,7 +72,7 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error('$ {interests}contains duplicates');
     }
 
-    return this._collection.insert({ owner, title, start, end, startValue, endValue, startString, endString, interests, description, image, peopleGoing });
+    return this._collection.insert({ date, owner, title, start, end, startValue, endValue, startString, endString, interests, description, image, peopleGoing });
   }
 
   /**
@@ -80,6 +82,7 @@ class EventCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
+    const date = doc.date;
     const owner = doc.owner;
     const title = doc.title;
     const start = doc.start;
@@ -92,7 +95,7 @@ class EventCollection extends BaseCollection {
     const description = doc.description;
     const image = doc.image;
     const peopleGoing = doc.peopleGoing;
-    return { owner, title, start, end, startValue, endValue, startString, endString, interests, description, image, peopleGoing };
+    return { date, owner, title, start, end, startValue, endValue, startString, endString, interests, description, image, peopleGoing };
   }
 }
 

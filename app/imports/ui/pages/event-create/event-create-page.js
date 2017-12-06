@@ -8,6 +8,7 @@ import { Profiles } from '/imports/api/profile/ProfileCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
+const selectedInterestsKey = 'selectedInterests';
 
 Template.Event_Create_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
@@ -16,6 +17,7 @@ Template.Event_Create_Page.onCreated(function onCreated() {
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
   this.context = Events.getSchema().namedContext('Event_Create_Page');
+  this.messageFlags.set(selectedInterestsKey, undefined);
 });
 
 Template.Event_Create_Page.helpers({
@@ -39,7 +41,13 @@ Template.Event_Create_Page.helpers({
               return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
             });
     */
-    return Interests.findAll();
+    return _.map(Interests.findAll(),
+        function makeInterestObject(interest) {
+          return {
+            label: interest.name,
+            selected: _.contains(Template.instance().messageFlags.get(selectedInterestsKey), interest.name),
+          };
+        });
   },
 });
 

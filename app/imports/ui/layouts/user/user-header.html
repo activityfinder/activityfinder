@@ -1,11 +1,11 @@
 <template name="User_Header">
   <div class="ui top fixed borderless blue inverted menu">
     <div class="ui container">
-      <div class="item"><h1>Activity Finder</h1></div>
-      <a class="{{isActiveRoute "Profile_Page"}} item" href="{{pathFor "Profile_Page" username=routeUserName}}">Profile</a>
-      <a class="{{isActiveRoute "Filter_Page"}} item" href="{{pathFor "Filter_Page" username=routeUserName}}">Filter</a>
-      <a class="{{isActiveRoute "Event_Create_Page"}} item" href="{{pathFor "Event_Create_Page" username=routeUserName}}">Event</a>
-      <div class="right aligned item">{{> Cas_Login }}</div>
+      <img class="ui image item" src="https://i.imgur.com/rE3EoUL.png">
+      <a class="{{isActiveRoute "Profile_Page"}} right aligned item" href="{{pathFor "Profile_Page" username=routeUserName}}"><i class="user icon"></i>Profile</a>
+      <a class="{{isActiveRoute "Filter_Page"}} item" href="{{pathFor "Filter_Page" username=routeUserName}}"><i class="filter icon"></i>Filter</a>
+      <a class="{{isActiveRoute "Event_Create_Page"}} item" href="{{pathFor "Event_Create_Page" username=routeUserName}}"><i class="add to calendar icon"></i>Event</a>
+      <div class="item">{{> Cas_Login }}</div>
     </div>
   </div>
 </template>

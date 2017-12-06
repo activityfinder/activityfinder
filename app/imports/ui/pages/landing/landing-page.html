@@ -1,55 +1,36 @@
 <template name="Landing_Page">
-  <div id="background">
 
-    <div class="landing-section-1">
-      <div class="ui grid">
-        <div class="row">
-          <div class="ui right aligned sixteen wide column">
+  <div class="background">
+
+    <div class="ui topmenu inverted menu">
+      <div class="ui container">
+          <div class="ui right aligned item">
             {{> Cas_Login }}
           </div>
-
-        </div>
-
-        <div class="row">
-          <div class="ui center aligned sixteen wide column">
-            <h1 class="landing-section-1-welcome">Activity Finder</h1>
-            <h2 class="landing-section-1-tagline">Allowing UH students to find activities and events to do with others
-              on the island</h2>
-          </div>
-        </div>
-
       </div>
     </div>
 
-    <div class="landing-section-2">
-      <div class="ui grid">
-        <div class="ui eight wide column">
-          <img class="ui centered medium image" src="/images/event creation.png">
-        </div>
-        <div class="ui eight wide middle aligned column">
-          <h1 class="landing-section-header">Create a new activity</h1>
+    <div class="logo">
+      <div class="ui column centered grid">
+        <div class="column">
+          <img src="https://i.imgur.com/wxkCxP6.png">
         </div>
       </div>
     </div>
 
-    <div class="landing-section-3">
-      <div class="ui grid">
-        <div class="ui eight wide middle aligned column">
-          <h1 class="landing-section-header">Filter activities based on interests, location, etc</h1>
+    <div class="footer">
+      <div class="ui three column grid container">
+        <div class="column">
+          <img class="ui centered large rounded image" src="/images/event creation.png">
+          <h2>Create an activity</h2>
         </div>
-        <div class="ui eight wide column">
-          <img class="ui centered medium image" src="/images/directory.png">
+        <div class="column">
+          <img class="ui centered large rounded image" src="/images/directory.png">
+          <h2>Filter activites based on interests, location, etc</h2>
         </div>
-      </div>
-    </div>
-
-    <div class="landing-section-2">
-      <div class="ui grid">
-        <div class="ui eight wide column">
-          <img class="ui centered medium image" src="/images/event info.png">
-        </div>
-        <div class="ui eight wide middle aligned column">
-          <h1 class="landing-section-header">Browse future events or activities</h1>
+        <div class="column">
+          <img class="ui centered large rounded image" src="/images/event info.png">
+          <h2>Browse future events or activities</h2>
         </div>
       </div>
     </div>

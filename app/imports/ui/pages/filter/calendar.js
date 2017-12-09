@@ -5,6 +5,7 @@ import { _ } from 'meteor/underscore';
 import { $ } from 'meteor/jquery';
 import { moment } from 'meteor/momentjs:moment';
 import { Events } from '/imports/api/event/EventCollection';
+import { Session } from 'meteor/session';
 import { Interests } from '/imports/api/interest/InterestCollection';
 
 Template.Filter_Page.onCreated(function onCreated() {
@@ -36,7 +37,7 @@ Template.Calendar.onRendered(() => {
     events(start, end, timezone, callback) {
       const data = Events.find().fetch().map((session) => {
         // Don't allow already past study events to be editable.
-        session.editable = !isPast(session.start);
+        session.editable = !isPast(session.start); // eslint-disable-line no-param-reassign
         return session;
       });
 
@@ -72,16 +73,10 @@ Template.Calendar.onRendered(() => {
     // Allow events to be dragged and dropped.
     eventDrop(session, delta, revert) {
       const date = session.start.format();
-
       if (!isPast(date)) {
-        const update = {
-          _id: session._id,
-          start: date,
-          end: date,
-        };
-
+        const update = { _id: session._id, start: date, end: date };
         // Update the date of the event.
-        Meteor.call('editEvent', update);
+        Events.update(update._id, { $set: update });
       } else {
         revert();
       }

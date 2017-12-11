@@ -1,7 +1,7 @@
 <template name="User_Header">
   <div class="ui top fixed borderless blue inverted menu">
     <div class="ui container">
-      <img class="ui image item" src="https://i.imgur.com/rE3EoUL.png">
+      <img class="ui image item" src="images/header-logo.png">
       <a class="{{isActiveRoute "Profile_Page"}} right aligned item" href="{{pathFor "Profile_Page" username=routeUserName}}"><i class="user icon"></i>Profile</a>
       <a class="{{isActiveRoute "Filter_Page"}} item" href="{{pathFor "Filter_Page" username=routeUserName}}"><i class="filter icon"></i>Filter</a>
       <a class="{{isActiveRoute "Event_Create_Page"}} item" href="{{pathFor "Event_Create_Page" username=routeUserName}}"><i class="add to calendar icon"></i>Event</a>

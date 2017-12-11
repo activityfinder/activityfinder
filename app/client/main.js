@@ -14,6 +14,7 @@ import '/imports/ui/pages/landing';
 import '/imports/ui/pages/user';
 import '/imports/ui/pages/event-create';
 import '/imports/ui/pages/event-info';
+import '/imports/ui/pages/event-list';
 import '/imports/ui/stylesheets/style.css';
 import '/imports/api/base';
 import '/imports/api/profile';

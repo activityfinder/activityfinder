@@ -1,5 +1,6 @@
 <template name="Event_Card">
-  <div class="item">
+
+  <div class="card">
     <div class="content">
       <img class="right floated mini ui image" src="{{ event.image }}">
       <div class="header">
@@ -11,12 +12,12 @@
         {{ event.time }}
       </div>
       <div class="description">
-      {{ event.description }}
+        {{ event.description }}
       </div>
       <div style="margin-top: 10px">
-          {{#each interest in event.interests}}
-      <a style="margin-bottom: 2px" class="ui teal tag small label">{{interest}}</a>
-      {{/each}}
+        {{#each interest in event.interests}}
+          <a style="margin-bottom: 2px" class="ui teal tag small label">{{interest}}</a>
+        {{/each}}
       </div>
     </div>
     <div class="extra content">
@@ -25,4 +26,5 @@
       </div>
     </div>
   </div>
+
 </template>

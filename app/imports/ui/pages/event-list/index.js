@@ -1,2 +1,2 @@
 import './event-list.html';
-import './event-list';
+import './event-list.js';

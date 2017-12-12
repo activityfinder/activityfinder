@@ -2,17 +2,23 @@
 
   <div class="card">
     <div class="content">
-      <img class="right floated mini ui image" src="{{ event.image }}">
+      <img class="right floated medium ui image" src="{{ event.image }}">
       <div class="header">
-        {{ event.name }}
+        {{ event.title }}
       </div>
       <div class="meta">
         {{ event.location }}
         {{ event.date }}
-        {{ event.time }}
+        <br>
+        {{ event.start }}
       </div>
+      <hr>
       <div class="description">
         {{ event.description }}
+      </div>
+      <hr>
+      <div class="attendance">
+        {{ event.peopleGoing }}
       </div>
       <div style="margin-top: 10px">
         {{#each interest in event.interests}}
@@ -22,7 +28,12 @@
     </div>
     <div class="extra content">
       <div class="ui equal width left aligned grid">
-        <div class="column"><a href="mailto:{{ event.username}}@hawaii.edu"><i class="big mail icon"></i></a></div>
+        <div class="column"><a href="mailto:{{ event.owner }}@hawaii.edu"><i class="big mail icon"></i></a></div>
+        <div class="column">
+          <div class="ui tiny blue button">
+            <div class="join-event">Join</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

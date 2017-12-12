@@ -4,7 +4,6 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Events } from '/imports/api/event/EventCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
@@ -30,9 +29,6 @@ Template.Event_Create_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
-  event() {
-    return Profiles.findDoc(FlowRouter.getParam('username'));
-  },
   interests() {
     /* const event = Profiles.findDoc(FlowRouter.getParam('username'));
     const selectedInterests = event.interests;
@@ -51,34 +47,43 @@ Template.Event_Create_Page.helpers({
   },
 });
 
-
 Template.Event_Create_Page.events({
   'submit .event-data-form'(event, instance) {
     event.preventDefault();
-    const name = event.target.Name.value;
-    const location = event.target.Location.value;
     const date = event.target.Date.value;
-    const username = FlowRouter.getParam('username'); // schema requires username.
-    const time = event.target.Time.value;
+    const owner = FlowRouter.getParam('username');
+    const title = event.target.Title.value;
+    const start = event.target.Start.value;
+    const end = event.target.End.value; // schema requires username.
     const description = event.target.Description.value;
     const image = event.target.Image.value;
+    const peopleGoing = [FlowRouter.getParam('username')];
     const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
 
-    const updatedEventData = { name, location, date, username, time, description, image, interests };
-
-    // Clear out any old validation errors.
+    const newEventData = {
+      date,
+      owner,
+      title,
+      start,
+      end,
+      description,
+      image,
+      interests,
+      peopleGoing,
+    };
     instance.context.reset();
     // Invoke clean so that updatedProfileData reflects what will be inserted.
-    const cleanData = Events.getSchema().clean(updatedEventData);
+    const cleanData = Events.getSchema().clean(newEventData);
     // Determine validity.
     instance.context.validate(cleanData);
+    console.log(cleanData);
 
     if (instance.context.isValid()) {
-      const docID = Events.findDoc(FlowRouter.getParam('username'))._id;
-      const id = Events.update(docID, { $set: cleanData });
-      instance.messageFlags.set(displaySuccessMessage, id);
+      Events.insert(cleanData);
+      instance.messageFlags.set(displaySuccessMessage, true);
       instance.messageFlags.set(displayErrorMessages, false);
+      alert('New event successfully entered into database!');
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);

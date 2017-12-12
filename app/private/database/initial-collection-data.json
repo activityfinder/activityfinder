@@ -1,5 +1,5 @@
 {
-  "comment": "Initial contents for the BowFolios database. For development purposes only.",
+  "comment": "Initial contents for the Activity Finder database. For development purposes only.",
   "collections": [
     {
       "name": "InterestCollection",

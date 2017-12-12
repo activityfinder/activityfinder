@@ -7,8 +7,10 @@ import { Interests } from '/imports/api/interest/InterestCollection';
 import { Events } from '/imports/api/event/EventCollection';
 
 Template.Event_List_Page.onCreated(function onCreated() {
+  this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
+  this.context = Events.getSchema().namedContext('Event_List_Page');
 });
 
 Template.Event_List_Page.helpers({

@@ -14,7 +14,7 @@ Template.Filter_Page.onCreated(function onCreated() {
 });
 
 Template.Filter_Page.helpers({
-  events() {
+  eventss() {
     // Initialize selectedInterests to all of them if messageFlags is undefined.
     if (!Template.instance().messageFlags.get(selectedInterestsKey)) {
       Template.instance().messageFlags.set(selectedInterestsKey, _.map(Interests.findAll(), interest => interest.name));

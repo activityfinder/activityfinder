@@ -9,26 +9,48 @@ import { Session } from 'meteor/session';
 import { Interests } from '/imports/api/interest/InterestCollection';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-Template.Calendar.onCreated(function onCreated() {
+const selectedInterestsKey = 'selectedInterests';
+
+Template.Calendar_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
-});
-
-const e = Events.findAll();
-$('#whygodwhy').text(e[0]);
-
-// Define a function that checks whether a moment has already passed.
-const isPast = (date) => {
-  const today = moment().format();
-  return moment(today).isAfter(moment(date));
-};
-
-Template.Calendar.onCreated(() => {
+  this.messageFlags.set(selectedInterestsKey, undefined);
   Template.instance().subscribe('EventCollection');
 });
 
-Template.Calendar.onRendered(() => {
+Template.Calendar_Page.helpers({
+  eventList() {
+    // Initialize selectedInterests to all of them if messageFlags is undefined.
+    if (!Template.instance().messageFlags.get(selectedInterestsKey)) {
+      Template.instance().messageFlags.set(selectedInterestsKey, _.map(Interests.findAll(), interest => interest.name));
+    }
+    // Find all profiles with the currently selected interests.
+    const allEvents = Events.findAll();
+    const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
+    return _.filter(allEvents, eventss => _.intersection(eventss.interests, selectedInterests).length > 0);
+  },
+
+  interests() {
+    return _.map(Interests.findAll(),
+        function makeInterestObject(interest) {
+          return {
+            label: interest.name,
+            selected: _.contains(Template.instance().messageFlags.get(selectedInterestsKey), interest.name),
+          };
+        });
+  },
+});
+/*
+Template.Calendar_Page.events({
+  'submit .filter-data-form'(event, instance) {
+    event.preventDefault();
+    const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
+    instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
+  },
+});
+*/
+Template.Calendar_Page.onRendered(() => {
   // Initialize the calendar.
   $('#event-calendar').fullCalendar({
     // Define the navigation buttons.
@@ -40,6 +62,7 @@ Template.Calendar.onRendered(() => {
     // Add events to the calendar.
     events(start, end, timezone, callback) {
       const data = Events.findAll().map((session) => {
+        console.log('it got here');
         session.time = `${session.start} to ${session.end}`; // eslint-disable-line no-param-reassign
         session.start = Date(session.date); // eslint-disable-line no-param-reassign
         session.end = Date(session.date); // eslint-disable-line no-param-reassign
@@ -84,3 +107,4 @@ Template.Calendar.onRendered(() => {
     $('#event-calendar').fullCalendar('refetchEvents');
   });
 });
+

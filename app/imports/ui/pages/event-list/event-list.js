@@ -17,4 +17,11 @@ Template.Event_List_Page.helpers({
   events() {
     return Events.findAll();
   },
+  rsvp(peopleGoing) {
+    console.log(peopleGoing);
+    if (peopleGoing.indexOf(FlowRouter.getParam('username')) > -1) {
+      return false;
+    }
+    return true;
+  },
 });

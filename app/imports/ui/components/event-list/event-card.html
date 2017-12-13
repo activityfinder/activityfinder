@@ -31,7 +31,11 @@
         <div class="column"><a href="mailto:{{ event.owner }}@hawaii.edu"><i class="big mail icon"></i></a></div>
         <div class="column">
           <div class="ui tiny blue button">
-            <div class="join-event">Join</div>
+            {{#if RSVP }}
+              <div class="join-event">Join</div>
+            {{else}}
+              <div class="leave-event">Leave</div>
+            {{/if}}
           </div>
         </div>
       </div>

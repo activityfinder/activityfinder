@@ -5,7 +5,7 @@
       <div class="ui cards">
 
         {{#each event in events }}
-          {{> Event_Card event=event }}
+          {{> Event_Card event=event RSVP=(rsvp event.peopleGoing) }}
         {{/each}}
 
       </div>

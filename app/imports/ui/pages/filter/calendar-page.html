@@ -1,0 +1,26 @@
+<template name="Calendar_Page">
+  {{#if Template.subscriptionsReady}}
+    <div style="margin-top: 10px" class="ui container">
+
+      <form class="ui equal width form filter-data-form">
+        <div class="field">
+          {{> Select_Form_Control label="Interests" options=interests multiple=true }}
+        </div>
+        <button class="ui teal button" type="submit">Filter</button>
+      </form>
+
+      <div class="ui raised segment container">
+        <!--Add the events calendar to the template.-->
+        <div id="event-calendar"></div>
+      </div>
+
+      <!-- Create the "create-event-modal" -->
+      <div id="create-event-modal" class="ui modal">
+        <div class="ui container" style="padding-top: 5%; padding-bottom: 5%">
+          {{> Create_Event_Modal }}
+        </div>
+      </div>
+
+    </div>
+  {{/if}}
+</template>

@@ -68,6 +68,14 @@ userRoutes.route('/filter', {
   },
 });
 
+export const calendarPageRouteName = 'Calendar_Page';
+userRoutes.route('/calendar', {
+  name: calendarPageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: calendarPageRouteName });
+  },
+});
+
 export const eventCreatePageRouteName = 'Event_Create_Page';
 userRoutes.route('/event', {
   name: eventCreatePageRouteName,

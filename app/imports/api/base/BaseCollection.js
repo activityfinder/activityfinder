@@ -168,6 +168,17 @@ class BaseCollection {
   toString() {
     return this._collection.find().fetch();
   }
+
+  /**
+   * User made functions to fulfill some features.
+   * @param object
+   * @returns {boolean}
+   */
+  findEvent(object) {
+    const event = this._collection.findOne({ title: object })
+    if (event) return event;
+    return false;
+  }
   insert(object) {
     this._collection.insert(object);
     return true;

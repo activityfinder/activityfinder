@@ -7,12 +7,16 @@ import { moment } from 'meteor/momentjs:moment';
 import { Events } from '/imports/api/event/EventCollection';
 import { Session } from 'meteor/session';
 import { Interests } from '/imports/api/interest/InterestCollection';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
-Template.Filter_Page.onCreated(function onCreated() {
+Template.Calendar.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Events.getPublicationName());
   this.messageFlags = new ReactiveDict();
 });
+
+const e = Events.findAll();
+$('#whygodwhy').text(e[0]);
 
 // Define a function that checks whether a moment has already passed.
 const isPast = (date) => {
@@ -21,7 +25,7 @@ const isPast = (date) => {
 };
 
 Template.Calendar.onCreated(() => {
-  Template.instance().subscribe('EventData');
+  Template.instance().subscribe('EventCollection');
 });
 
 Template.Calendar.onRendered(() => {
@@ -35,9 +39,17 @@ Template.Calendar.onRendered(() => {
     },
     // Add events to the calendar.
     events(start, end, timezone, callback) {
-      const data = Events.find().fetch().map((session) => {
-        // Don't allow already past study events to be editable.
-        session.editable = !isPast(session.start); // eslint-disable-line no-param-reassign
+      const data = Events.findAll().map((session) => {
+        session.time = `${session.start} to ${session.end}`; // eslint-disable-line no-param-reassign
+        session.start = Date(session.date); // eslint-disable-line no-param-reassign
+        session.end = Date(session.date); // eslint-disable-line no-param-reassign
+        // set event red if you're in it
+        if (_.find(session.peopleGoing, function (username) {
+          return username === FlowRouter.getParam('username');
+        })) {
+          session.backgroundColor = '#db2828'; // eslint-disable-line no-param-reassign
+          session.borderColor = '#db2828'; // eslint-disable-line no-param-reassign
+        }
         return session;
       });
 
@@ -49,7 +61,7 @@ Template.Calendar.onRendered(() => {
     // Configure the information displayed for an "event."
     eventRender(session, element) {
       element.find('.fc-content').html(
-          `<h4 class="title">${session.name}</h4>
+          `<h5 class="title">${session.title}</h5>
           <p class="time">${session.time}</p>
           `,
       );
@@ -62,23 +74,6 @@ Template.Calendar.onRendered(() => {
       // If the date has not already passed, show the create event modal.
       if (date.isAfter(moment())) {
         $('#create-event-modal').modal({ blurring: true }).modal('show');
-      }
-    },
-
-    // Delete an event if it is clicked on.
-    eventClick(event) {
-      Events.remove({ _id: event._id });
-    },
-
-    // Allow events to be dragged and dropped.
-    eventDrop(session, delta, revert) {
-      const date = session.start.format();
-      if (!isPast(date)) {
-        const update = { _id: session._id, start: date, end: date };
-        // Update the date of the event.
-        Events.update(update._id, { $set: update });
-      } else {
-        revert();
       }
     },
   });

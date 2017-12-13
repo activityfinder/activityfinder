@@ -168,6 +168,10 @@ class BaseCollection {
   toString() {
     return this._collection.find().fetch();
   }
+  insert(object) {
+    this._collection.insert(object);
+    return true;
+  }
 
   /**
    * Verifies that the passed object is one of this collection's instances.

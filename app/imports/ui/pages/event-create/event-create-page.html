@@ -9,31 +9,31 @@
     <form class="ui equal width form event-data-form {{ successClass }} {{ errorClass }}">
 
       <div class="field">
-        {{> Text_Form_Control label="Name" placeholder="Social" value=event.name errorMessage=(fieldError "name")}}
+        {{> Text_Form_Control label="Title" placeholder="Networking Event" errorMessage=(fieldError "title")}}
       </div>
 
       <div class="field">
-        {{> Text_Form_Control label="Location" placeholder="UH Manoa" value=event.location errorMessage=(fieldError "location")}}
+        {{> Text_Form_Control label="Date" placeholder="12/25/17" errorMessage=(fieldError "date")}}
       </div>
 
       <div class="field">
-        {{> Text_Form_Control label="Date" placeholder="12/12/2000" value=event.date errorMessage=(fieldError "date")}}
+        {{> Text_Form_Control label="Start" placeholder="8:00 am" errorMessage=(fieldError "start")}}
       </div>
 
       <div class="field">
-        {{> Text_Form_Control label="Time" placeholder="08:30" value=event.time errorMessage=(fieldError "time")}}
+        {{> Text_Form_Control label="End" placeholder="10:00 am" errorMessage=(fieldError "end")}}
+      </div>
+
+      <div class="field">
+        {{> Text_Form_Control label="Description" placeholder="Short description of the event here. Please include where the event is taking place." errorMessage=(fieldError "description")}}
+      </div>
+
+      <div class="field">
+        {{> Text_Form_Control label="Image" placeholder="foo.bar/foo.jpg" errorMessage=(fieldError "Image")}}
       </div>
 
       <div class="field">
         {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true }}
-      </div>
-
-      <div class="field">
-        {{> Text_Form_Control label="Description" placeholder="Short description of the event here" value=event.description errorMessage=(fieldError "description")}}
-      </div>
-
-      <div class="field">
-        {{> Text_Form_Control label="Image" placeholder="foo.bar/foo.jpg" value=event.image errorMessage=(fieldError "Image")}}
       </div>
 
       <button class="ui primary button" type="submit">Submit</button>

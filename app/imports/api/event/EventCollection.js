@@ -25,18 +25,6 @@ class EventCollection extends BaseCollection {
       title: { type: String },
       start: { type: String },
       end: { type: String },
-      startValue: { type: Number, optional: true },
-      endValue: {
-        type: Number, optional: true, custom: function startAndEnd() {
-          let x = 0;
-          if (this.value < this.field('startValue').value || this.value === this.field('startValue').value) {
-            x = 'endValue';
-          }
-          return x;
-        },
-      },
-      startString: { type: String, optional: true },
-      endString: { type: String, optional: true },
       interests: { type: Array, optional: true },
       'interests.$': { type: String },
       description: { type: String, optional: true },
@@ -47,7 +35,7 @@ class EventCollection extends BaseCollection {
   }
 
   /** Possibly an error because owner might not have to be initialized as '' */
-  define({ date = '', owner = '', title = '', start = '', end = '', startValue = 0, endValue = 1, startString = '', endString = '', interests = [], description = '', image = '', peopleGoing = [] }) {
+  define({ date = '', owner = '', title = '', start = '', end = '', interests = [], description = '', image = '', peopleGoing = [] }) {
     // make sure required fields are OK.
     const checkPattern = {
       date: String,
@@ -55,14 +43,10 @@ class EventCollection extends BaseCollection {
       title: String,
       start: String,
       end: String,
-      startValue: Number,
-      endValue: Number,
-      startString: String,
-      endString: String,
       description: String,
       image: String,
     };
-    check({ date, owner, title, start, end, startValue, endValue, startString, endString, description, image }, checkPattern);
+    check({ date, owner, title, start, end, description, image }, checkPattern);
 
 // Throw an error if any of the passed Interest names are not defined.
     Interests.assertNames(interests);
@@ -72,7 +56,7 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error('$ {interests}contains duplicates');
     }
 
-    return this._collection.insert({ date, owner, title, start, end, startValue, endValue, startString, endString, interests, description, image, peopleGoing });
+    return this._collection.insert({ date, owner, title, start, end, interests, description, image, peopleGoing });
   }
 
   /**
@@ -87,15 +71,11 @@ class EventCollection extends BaseCollection {
     const title = doc.title;
     const start = doc.start;
     const end = doc.end;
-    const startValue = doc.startValue;
-    const endValue = doc.endValue;
-    const startString = doc.startString;
-    const endString = doc.endString;
     const interests = doc.interests;
     const description = doc.description;
     const image = doc.image;
     const peopleGoing = doc.peopleGoing;
-    return { date, owner, title, start, end, startValue, endValue, startString, endString, interests, description, image, peopleGoing };
+    return { date, owner, title, start, end, interests, description, image, peopleGoing };
   }
 }
 

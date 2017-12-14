@@ -23,7 +23,7 @@ class EventCollection extends BaseCollection {
       date: { type: String },
       owner: { type: String },
       title: { type: String },
-      location: { type: String},
+      location: { type: String },
       start: { type: String },
       end: { type: String },
       interests: { type: Array, optional: true },

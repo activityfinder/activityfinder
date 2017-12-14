@@ -25,13 +25,17 @@
         <a style="margin-bottom: 2px" class="ui teal tag small label">{{interest}}</a>
         {{/each}}
       </div>
-      <button class="ui primary teal button" type="submit">
-        {{#if RSVP }}
-          Join
-        {{else}}
-          Leave
-        {{/if}}
-      </button>
+      {{#if owner }}
+        <button class="ui red button" type="submit">
+          Delete
+        </button>
+      {{else}}
+          {{#if RSVP }}
+            <button class="ui blue button" type="submit">Join</button>
+          {{else}}
+            <button class="ui black button" type="submit">Leave</button>
+          {{/if}}
+      {{/if}}
     </div>
     <div class="extra content">
       <div class="ui equal width left aligned grid">

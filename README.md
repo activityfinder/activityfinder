@@ -1,2 +1,2 @@
 # activityfinder
-Main project
+Finding activities for UH students.

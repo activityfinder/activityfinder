@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
+import { $ } from 'meteor/jquery';
 import { Events } from '/imports/api/event/EventCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
 
@@ -14,17 +15,6 @@ Template.Calendar_Page.onCreated(function onCreated() {
 });
 
 Template.Calendar_Page.helpers({
-  eventss() {
-    // Initialize selectedInterests to all of them if messageFlags is undefined.
-    if (!Template.instance().messageFlags.get(selectedInterestsKey)) {
-      Template.instance().messageFlags.set(selectedInterestsKey, _.map(Interests.findAll(), interest => interest.name));
-    }
-    // Find all profiles with the currently selected interests.
-    const allEvents = Events.findAll();
-    const selectedInterests = Template.instance().messageFlags.get(selectedInterestsKey);
-    return _.filter(allEvents, eventss => _.intersection(eventss.interests, selectedInterests).length > 0);
-  },
-
   interests() {
     return _.map(Interests.findAll(),
         function makeInterestObject(interest) {
@@ -41,6 +31,21 @@ Template.Calendar_Page.events({
     event.preventDefault();
     const selectedOptions = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     instance.messageFlags.set(selectedInterestsKey, _.map(selectedOptions, (option) => option.value));
+    const arr = _.map(selectedOptions, (option) => option.value);
+    if (selectedOptions.length > 0) {
+      $('.fc-content .interests').each(function () {
+        const interests = $(this).text().split(',');
+        if (_.intersection(interests, arr).length === 0) {
+          $(this).parent().parent().parent()
+              .css('visibility', 'hidden');
+        }
+      });
+    } else {
+      $('.fc-content .interests').each(function () {
+        $(this).parent().parent().parent()
+            .css('visibility', 'visible');
+      });
+    }
   },
 });
 

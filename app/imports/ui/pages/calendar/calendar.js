@@ -51,17 +51,24 @@ Template.Calendar.onRendered(() => {
 
     // Configure the information displayed for an "event."
     eventRender(session, element) {
+      const interests = _.reduce(session.interests, function (item, list) {
+        list += ','; // eslint-disable-line
+        list += item; // eslint-disable-line
+        return list;
+      });
       element.find('.fc-content').html(
           `<h5 class="title">${session.title}</h5>
           <p class="time">${session.time}</p>
+          <p style="display:none" class="interests">${interests}</p>
           `,
       );
+      $(element).attr('href', `/${FlowRouter.getParam('username')}/event-list`);
     },
 
     // Triggered when a day is clicked on.
     dayClick(date) {
       // Store the date so it can be used when adding an event to the EventData collection.
-      Session.set('eventModal', { type: 'add', date: date.format() });
+      Session.set('eventModal', { type: 'add', date: date.format() }); // eslint-disable-line
       // If the date has not already passed, show the create event modal.
       if (date.isAfter(moment())) {
         $('#create-event-modal').modal({ blurring: true }).modal('show');

@@ -20,36 +20,37 @@
       <hr>
       <div class="attendance">
         {{#each person in event.peopleGoing}}
-        {{person}}
+          {{person}}
         {{/each}}
       </div>
-      <div class="ui equal width center aligned grid">
+      <div class="ui equal width center aligned grid" style="padding: 10px;">
         <div class="column">
-          <div style="margin-top: 10px">
+          <div style="padding-top: 5px">
             {{#each interest in event.interests}}
-            <a style="margin-bottom: 2px" class="ui teal tag small label">{{interest}}</a>
+              <a class="ui teal tag small label">{{interest}}</a>
             {{/each}}
           </div>
         </div>
         <div class="column">
-        </div>
-        {{#if owner }}
-        <button class="ui red button" type="submit">
-          Delete
-        </button>
-        {{else}}
-        {{#if RSVP }}
-        <button class="ui blue button" type="submit">Join</button>
-        {{else}}
-        <button class="ui black button" type="submit">Leave</button>
-        {{/if}}
-        {{/if}}
-      </div>
-      <div class="extra content">
-        <div class="ui equal width center aligned grid">
-          <div class="column"><a href="mailto:{{ event.owner }}@hawaii.edu"><i class="big mail icon"></i></a></div>
+          {{#if owner }}
+            <button class="ui small red button" type="submit">Delete</button>
+          {{else}}
+            {{#if RSVP }}
+              <button class="ui small blue button" type="submit">Join</button>
+            {{else}}
+              <button class="ui small black button" type="submit">Leave</button>
+            {{/if}}
+          {{/if}}
         </div>
       </div>
     </div>
+    <div class="extra content">
+      <div class="ui equal width center aligned grid">
+        <div class="column">
+          <a href="mailto:{{ event.owner }}@hawaii.edu"><i class="big mail icon"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </template>

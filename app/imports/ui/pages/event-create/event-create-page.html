@@ -25,6 +25,10 @@
       </div>
 
       <div class="field">
+        {{> Text_Form_Control label="Location" placeholder="Ala Moana Beach" errorMessage=(fieldError "location")}}
+      </div>
+
+      <div class="field">
         {{> Text_Form_Control label="Description" placeholder="Short description of the event here. Please include where the event is taking place." errorMessage=(fieldError "description")}}
       </div>
 

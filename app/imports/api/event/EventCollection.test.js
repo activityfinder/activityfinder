@@ -14,11 +14,11 @@ if (Meteor.isServer) {
     const location = 'Ben & Jerry\'s';
     const start = '8:00 am';
     const end = '10:00 am';
-    const interests = ["Food"];
+    const interests = ['Food'];
     const description = 'Free ice cream and free admission! Show up to mingle with your peers. Please RSVP so we know how much ice cream to buy.';
     const image = '/images/ice-cream.jpg';
-    const peopleGoing = ["jlam890"];
-    const defineObject = { date, owner, title, location, start, end, interests, description image, peopleGoing };
+    const peopleGoing = ['jlam890'];
+    const defineObject = { date, owner, title, location, start, end, interests, description, image, peopleGoing };
 
     before(function setup() {
       removeAllEntities();

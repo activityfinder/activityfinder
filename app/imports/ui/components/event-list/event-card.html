@@ -18,7 +18,9 @@
       </div>
       <hr>
       <div class="attendance">
-        {{ event.peopleGoing }}
+        {{#each person in event.peopleGoing}}
+          {{person}}
+        {{/each}}
       </div>
       <div style="margin-top: 10px">
         {{#each interest in event.interests}}

@@ -2,14 +2,12 @@
   <div class="ui top fixed borderless blue inverted menu">
     <div class="ui container">
       <img class="ui image item" src="images/header-logo.png">
-      <a class="{{isActiveRoute "Profile_Page"}} right aligned item"
-         href="{{pathFor "Profile_Page" username=routeUserName}}"><i class="user icon"></i>Profile</a>
-      <a class="{{isActiveRoute "Calendar_Page"}} item" href="{{pathFor "Calendar_Page" username=routeUserName}}"><i
+      <a class="{{isActiveRoute "Calendar_Page"}} right item" href="{{pathFor "Calendar_Page" username=routeUserName}}"><i
           class="calendar icon"></i>Calendar</a>
       <a class="{{isActiveRoute "Event_Create_Page"}} item"
-         href="{{pathFor "Event_Create_Page" username=routeUserName}}"><i class="add to calendar icon"></i>Event</a>
+         href="{{pathFor "Event_Create_Page" username=routeUserName}}"><i class="add to calendar icon"></i>Create Event</a>
       <a class="{{isActiveRoute "Event_List_Page"}} item"
-         href="{{pathFor "Event_List_Page" username=routeUserName}}"><i class="browser icon"></i>List of Events</a>
+         href="{{pathFor "Event_List_Page" username=routeUserName}}"><i class="browser icon"></i>Events List</a>
       <div class="item">{{> Cas_Login }}</div>
     </div>
   </div>

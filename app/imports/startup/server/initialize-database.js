@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Profiles } from '/imports/api/profile/ProfileCollection';
 import { Interests } from '/imports/api/interest/InterestCollection';
 import { Events } from '/imports/api/event/EventCollection';
 import { _ } from 'meteor/underscore';

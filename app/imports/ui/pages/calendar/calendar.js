@@ -15,12 +15,6 @@ Template.Calendar.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
 });
 
-// Define a function that checks whether a moment has already passed.
-const isPast = (date) => {
-  const today = moment().format();
-  return moment(today).isAfter(moment(date));
-};
-
 Template.Calendar.onCreated(() => {
   Template.instance().subscribe('EventCollection');
 });

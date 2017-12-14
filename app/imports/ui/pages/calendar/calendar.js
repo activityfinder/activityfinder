@@ -36,8 +36,8 @@ Template.Calendar.onRendered(() => {
         session.end = Date.parse(session.date); // eslint-disable-line no-param-reassign
         // set event red if you're in it
         if (_.find(session.peopleGoing, function (username) {
-          return username === FlowRouter.getParam('username');
-        })) {
+              return username === FlowRouter.getParam('username');
+            })) {
           session.backgroundColor = '#db2828'; // eslint-disable-line no-param-reassign
           session.borderColor = '#db2828'; // eslint-disable-line no-param-reassign
         }

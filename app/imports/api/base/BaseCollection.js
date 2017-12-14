@@ -174,6 +174,21 @@ class BaseCollection {
   }
 
   /**
+   * User made functions to fulfill some features.
+   * @param object
+   * @returns {boolean}
+   */
+  findEvent(object) {
+    const event = this._collection.findOne({ title: object })
+    if (event) return event;
+    return false;
+  }
+  insert(object) {
+    this._collection.insert(object);
+    return true;
+  }
+
+  /**
    * Verifies that the passed object is one of this collection's instances.
    * @param { String | List } name Should be a defined ID or doc in this collection.
    * @throws { Meteor.Error } If not defined.

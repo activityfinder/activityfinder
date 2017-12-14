@@ -1,0 +1,43 @@
+<template name="Event_Card">
+
+  <div class="card">
+    <div class="content event-info-card">
+      <div class="header">
+        {{ event.title }}
+      </div>
+      <div class="meta">
+        {{ event.location }}
+        {{ event.date }}
+        <br>
+        {{ event.start }}
+      </div>
+      <img class="right floated medium ui image" src="{{ event.image }}">
+      <hr>
+      <div class="description">
+        {{ event.description }}
+      </div>
+      <hr>
+      <div class="attendance">
+        {{ event.peopleGoing }}
+      </div>
+      <div style="margin-top: 10px">
+        {{#each interest in event.interests}}
+        <a style="margin-bottom: 2px" class="ui teal tag small label">{{interest}}</a>
+        {{/each}}
+      </div>
+      <button class="ui primary teal button" type="submit">
+        {{#if RSVP }}
+          Join
+        {{else}}
+          Leave
+        {{/if}}
+      </button>
+    </div>
+    <div class="extra content">
+      <div class="ui equal width left aligned grid">
+        <div class="column"><a href="mailto:{{ event.owner }}@hawaii.edu"><i class="big mail icon"></i></a></div>
+      </div>
+    </div>
+  </div>
+
+</template>

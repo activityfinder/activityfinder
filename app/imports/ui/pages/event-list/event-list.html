@@ -1,9 +1,15 @@
-<template name="Event_List">
-  <div class="ui container">
-    <div style="margin-top: 20px" class="ui middle aligned celled list">
-      {{#each event in events }}
-        {{> Event_Card event=event }}
-      {{/each}}
+<template name="Event_List_Page">
+
+  {{#if Template.subscriptionsReady}}
+    <div style="margin-top: 15px; margin-bottom: 15px" class="ui container">
+      <div class="ui cards">
+
+        {{#each event in events }}
+          {{> Event_Card event=event RSVP=(rsvp event.peopleGoing) }}
+        {{/each}}
+
+      </div>
     </div>
-  </div>
+  {{/if}}
+
 </template>

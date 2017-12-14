@@ -79,6 +79,10 @@
         {
           "name": "Horse riding",
           "description": ""
+        },
+        {
+          "name": "School",
+          "description": ""
         }
       ]
     },
@@ -96,7 +100,7 @@
             "Food"
           ],
           "description": "Free ice cream and free admission! Show up to mingle with your peers. Please RSVP so we know how much ice cream to buy.",
-          "image": "/images/icecream.jpg",
+          "image": "/images/ice-cream.jpg",
           "peopleGoing": [
             "jlam890"
           ]

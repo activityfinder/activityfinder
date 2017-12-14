@@ -52,14 +52,22 @@ Template.Event_Create_Page.events({
     event.preventDefault();
     const date = event.target.Date.value;
     const owner = FlowRouter.getParam('username');
-    const title = event.target.Title.value;
+    let title = event.target.Title.value;
     const start = event.target.Start.value;
     const end = event.target.End.value; // schema requires username.
+    const location = event.target.Location.value;
     const description = event.target.Description.value;
     const image = event.target.Image.value;
     const peopleGoing = [FlowRouter.getParam('username')];
     const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
+    if (Events.findEvent(title)) {
+      let newName = prompt('This title for an event already exists! Please enter in another name to avoid confusion. Thank you!');
+      while (newName === title) {
+        newName = prompt('This title for an event already exists! Please enter in another name to avoid confusion. Thank you!');
+      }
+      title = newName;
+    }
 
     const newEventData = {
       date,
@@ -67,6 +75,7 @@ Template.Event_Create_Page.events({
       title,
       start,
       end,
+      location,
       description,
       image,
       interests,

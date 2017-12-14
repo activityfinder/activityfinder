@@ -179,12 +179,12 @@ class BaseCollection {
    * @returns {boolean}
    */
   findEvent(object) {
-    const event = this._collection.findOne({ title: object })
+    const event = this._collection.findOne({ title: object });
     if (event) return event;
     return false;
   }
-  insert(object) {
-    this._collection.insert(object);
+  deleteEvent(object) {
+    this._collection.remove({ _id: object });
     return true;
   }
 

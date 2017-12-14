@@ -22,24 +22,33 @@ Template.Event_List_Page.helpers({
     }
     return true;
   },
+  owner(event) {
+    if (event.owner === FlowRouter.getParam('username')) return true;
+    return false;
+  },
 });
 
 Template.Event_List_Page.events({
   'click .event-info-card'(event) {
     event.preventDefault();
-    console.log(event.currentTarget.firstElementChild.innerText);
     const currentEvent = Events.findEvent(event.currentTarget.firstElementChild.innerText);
-    const index = currentEvent.peopleGoing.indexOf(FlowRouter.getParam('username'));
-    if (index > -1) {
-      const newArray = currentEvent.peopleGoing;
-      newArray.splice(index, 1);
-      currentEvent.peopleGoing = newArray;
-      Events.update(currentEvent._id, { $set: currentEvent });
+    if (currentEvent.owner === FlowRouter.getParam('username')) {
+      if (confirm('Do you really want to delete this event? This action cannot be reversed!')) {
+        Events.deleteEvent(currentEvent._id);
+      }
     } else {
-      const newArray = currentEvent.peopleGoing;
-      newArray.push(FlowRouter.getParam('username'));
-      currentEvent.peopleGoing = newArray;
-      Events.update(currentEvent._id, { $set: currentEvent });
+      const index = currentEvent.peopleGoing.indexOf(FlowRouter.getParam('username'));
+      if (index > -1) {
+        const newArray = currentEvent.peopleGoing;
+        newArray.splice(index, 1);
+        currentEvent.peopleGoing = newArray;
+        Events.update(currentEvent._id, { $set: currentEvent });
+      } else {
+        const newArray = currentEvent.peopleGoing;
+        newArray.push(FlowRouter.getParam('username'));
+        currentEvent.peopleGoing = newArray;
+        Events.update(currentEvent._id, { $set: currentEvent });
+      }
     }
   },
 });

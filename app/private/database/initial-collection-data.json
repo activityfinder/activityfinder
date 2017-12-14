@@ -9,15 +9,15 @@
           "description": ""
         },
         {
+          "name": "Food",
+          "description": ""
+        },
+        {
           "name": "Cooking",
           "description": ""
         },
         {
-          "name": "Imu Cooking",
-          "description": "Hawaiian practice of cooking in a pit."
-        },
-        {
-          "name": "Scuba",
+          "name": "Scuba diving",
           "description": ""
         },
         {
@@ -55,6 +55,30 @@
         {
           "name": "Arts",
           "description": ""
+        },
+        {
+          "name": "Hiking",
+          "description": ""
+        },
+        {
+          "name": "Running",
+          "description": ""
+        },
+        {
+          "name": "Longboarding",
+          "description": ""
+        },
+        {
+          "name": "Beach",
+          "description": ""
+        },
+        {
+          "name": "Skydiving",
+          "description": ""
+        },
+        {
+          "name": "Horse riding",
+          "description": ""
         }
       ]
     },
@@ -62,20 +86,51 @@
       "name": "EventCollection",
       "contents": [
         {
-          "date": "12/30/17",
+          "date": "12/21/17",
           "owner": "jlam890",
           "title": "Ice Cream Social",
+          "location": "Ben & Jerry's",
           "start": "8:00 am",
           "end": "10:00 am",
           "interests": [
-            "Cooking"
+            "Food"
           ],
           "description": "Free ice cream and free admission! Show up to mingle with your peers. Please RSVP so we know how much ice cream to buy.",
           "image": "/images/icecream.jpg",
           "peopleGoing": [
-            "jlam890",
-            "username2",
-            "username3"
+            "jlam890"
+          ]
+        },
+        {
+          "date": "12/24/17",
+          "owner": "ducey",
+          "title": "Surfing",
+          "location": "Waikiki",
+          "start": "6:00 am",
+          "end": "8:00 am",
+          "interests": [
+            "Surfing"
+          ],
+          "description": "Surfs up, brah!",
+          "image": "/images/wave.jpg",
+          "peopleGoing": [
+            "ducey"
+          ]
+        },
+        {
+          "date": "12/30/17",
+          "owner": "tdorn",
+          "title": "Hiking",
+          "location": "Diamond Head",
+          "start": "5:00 am",
+          "end": "9:00 am",
+          "interests": [
+            "Hiking"
+          ],
+          "description": "Let's go hiking!",
+          "image": "/images/diamond-head.jpg",
+          "peopleGoing": [
+            "tdorn"
           ]
         }
       ]

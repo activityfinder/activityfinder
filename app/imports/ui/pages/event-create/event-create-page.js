@@ -92,7 +92,6 @@ Template.Event_Create_Page.events({
       Events.insert(cleanData);
       instance.messageFlags.set(displaySuccessMessage, true);
       instance.messageFlags.set(displayErrorMessages, false);
-      alert('New event successfully entered into database!');
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);

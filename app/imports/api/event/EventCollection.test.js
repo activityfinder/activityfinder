@@ -49,9 +49,9 @@ if (Meteor.isServer) {
     it('#findID, #findIDs', function test() {
       const docID = Events.define(defineObject);
       expect(Events.isDefined(docID)).to.be.true;
-      const docID2 = Events.findID(name);
+      const docID2 = Events.findID(date);
       expect(docID).to.equal(docID2);
-      Events.findIDs([name, name]);
+      Events.findIDs([date, date]);
       Events.removeIt(docID);
     });
   });

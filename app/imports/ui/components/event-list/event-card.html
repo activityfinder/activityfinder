@@ -7,43 +7,49 @@
       </div>
       <div class="meta">
         {{ event.location }}
+        <br>
         {{ event.date }}
         <br>
-        {{ event.start }}
+        {{ event.start }} to {{ event.end }}
       </div>
-      <img class="right floated medium ui image" src="{{ event.image }}">
-      <hr>
+      <img class="right floated large ui image" style="width: auto; height: auto; max-width: 260px; max-height: 174px"
+           src="{{ event.image }}">
       <div class="description">
         {{ event.description }}
       </div>
       <hr>
       <div class="attendance">
         {{#each person in event.peopleGoing}}
-          {{person}}
+        {{person}}
         {{/each}}
       </div>
-      <div style="margin-top: 10px">
-        {{#each interest in event.interests}}
-        <a style="margin-bottom: 2px" class="ui teal tag small label">{{interest}}</a>
-        {{/each}}
-      </div>
-      {{#if owner }}
+      <div class="ui equal width center aligned grid">
+        <div class="column">
+          <div style="margin-top: 10px">
+            {{#each interest in event.interests}}
+            <a style="margin-bottom: 2px" class="ui teal tag small label">{{interest}}</a>
+            {{/each}}
+          </div>
+        </div>
+        <div class="column">
+        </div>
+        {{#if owner }}
         <button class="ui red button" type="submit">
           Delete
         </button>
-      {{else}}
-          {{#if RSVP }}
-            <button class="ui blue button" type="submit">Join</button>
-          {{else}}
-            <button class="ui black button" type="submit">Leave</button>
-          {{/if}}
-      {{/if}}
-    </div>
-    <div class="extra content">
-      <div class="ui equal width left aligned grid">
-        <div class="column"><a href="mailto:{{ event.owner }}@hawaii.edu"><i class="big mail icon"></i></a></div>
+        {{else}}
+        {{#if RSVP }}
+        <button class="ui blue button" type="submit">Join</button>
+        {{else}}
+        <button class="ui black button" type="submit">Leave</button>
+        {{/if}}
+        {{/if}}
+      </div>
+      <div class="extra content">
+        <div class="ui equal width center aligned grid">
+          <div class="column"><a href="mailto:{{ event.owner }}@hawaii.edu"><i class="big mail icon"></i></a></div>
+        </div>
       </div>
     </div>
-  </div>
 
 </template>

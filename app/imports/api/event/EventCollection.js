@@ -23,6 +23,7 @@ class EventCollection extends BaseCollection {
       date: { type: String },
       owner: { type: String },
       title: { type: String },
+      location: { type: String},
       start: { type: String },
       end: { type: String },
       interests: { type: Array, optional: true },
@@ -35,18 +36,19 @@ class EventCollection extends BaseCollection {
   }
 
   /** Possibly an error because owner might not have to be initialized as '' */
-  define({ date = '', owner = '', title = '', start = '', end = '', interests = [], description = '', image = '', peopleGoing = [] }) {
+  define({ date = '', owner = '', title = '', location = '', start = '', end = '', interests = [], description = '', image = '', peopleGoing = [] }) {
     // make sure required fields are OK.
     const checkPattern = {
       date: String,
       owner: String,
       title: String,
+      location: String,
       start: String,
       end: String,
       description: String,
       image: String,
     };
-    check({ date, owner, title, start, end, description, image }, checkPattern);
+    check({ date, owner, title, location, start, end, description, image }, checkPattern);
 
 // Throw an error if any of the passed Interest names are not defined.
     Interests.assertNames(interests);
@@ -56,7 +58,7 @@ class EventCollection extends BaseCollection {
       throw new Meteor.Error('$ {interests}contains duplicates');
     }
 
-    return this._collection.insert({ date, owner, title, start, end, interests, description, image, peopleGoing });
+    return this._collection.insert({ date, owner, title, location, start, end, interests, description, image, peopleGoing });
   }
 
   /**
@@ -69,13 +71,14 @@ class EventCollection extends BaseCollection {
     const date = doc.date;
     const owner = doc.owner;
     const title = doc.title;
+    const location = doc.location;
     const start = doc.start;
     const end = doc.end;
     const interests = doc.interests;
     const description = doc.description;
     const image = doc.image;
     const peopleGoing = doc.peopleGoing;
-    return { date, owner, title, start, end, interests, description, image, peopleGoing };
+    return { date, owner, title, location, start, end, interests, description, image, peopleGoing };
   }
 }
 

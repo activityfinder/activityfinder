@@ -13,27 +13,6 @@ FlowRouter.route('/', {
   },
 });
 
-/*                        DIRECTORY ROUTE                       */
-
-function addDirectoryBodyClass() {
-  $('body').addClass('directory-page-body');
-}
-
-function removeDirectoryBodyClass() {
-  $('body').removeClass('directory-page-body');
-}
-
-export const directoryPageRouteName = 'Directory_Page';
-FlowRouter.route('/directory', {
-  name: directoryPageRouteName,
-  action() {
-    BlazeLayout.render('Directory_Layout', { main: directoryPageRouteName });
-  },
-  triggersEnter: [addDirectoryBodyClass],
-  triggersExit: [removeDirectoryBodyClass],
-});
-
-
 /*                        USER ROUTES                      */
 
 
@@ -52,13 +31,6 @@ const userRoutes = FlowRouter.group({
   triggersExit: [removeUserBodyClass],
 });
 
-export const profilePageRouteName = 'Profile_Page';
-userRoutes.route('/profile', {
-  name: profilePageRouteName,
-  action() {
-    BlazeLayout.render('User_Layout', { main: profilePageRouteName });
-  },
-});
 
 export const calendarPageRouteName = 'Calendar_Page';
 userRoutes.route('/calendar', {
@@ -76,13 +48,6 @@ userRoutes.route('/event', {
   },
 });
 
-export const eventInfoPageRouteName = 'Event_Info_Page';
-userRoutes.route('/event-info:_id', {
-  name: eventInfoPageRouteName,
-  action() {
-    BlazeLayout.render('User_Layout', { main: eventInfoPageRouteName });
-  },
-});
 
 export const eventListPageRouteName = 'Event_List_Page';
 userRoutes.route('/event-list', {

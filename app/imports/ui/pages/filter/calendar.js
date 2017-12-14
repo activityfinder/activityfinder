@@ -15,9 +15,6 @@ Template.Calendar.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
 });
 
-const e = Events.findAll();
-$('#whygodwhy').text(e[0]);
-
 // Define a function that checks whether a moment has already passed.
 const isPast = (date) => {
   const today = moment().format();
@@ -41,8 +38,8 @@ Template.Calendar.onRendered(() => {
     events(start, end, timezone, callback) {
       const data = Events.findAll().map((session) => {
         session.time = `${session.start} to ${session.end}`; // eslint-disable-line no-param-reassign
-        session.start = Date(session.date); // eslint-disable-line no-param-reassign
-        session.end = Date(session.date); // eslint-disable-line no-param-reassign
+        session.start = Date.parse(session.date); // eslint-disable-line no-param-reassign
+        session.end = Date.parse(session.date); // eslint-disable-line no-param-reassign
         // set event red if you're in it
         if (_.find(session.peopleGoing, function (username) {
           return username === FlowRouter.getParam('username');
